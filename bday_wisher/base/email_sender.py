@@ -19,7 +19,7 @@ def send_email(receiver_email,name):
     print(f'Sending email to {receiver_email}')
     # Create a secure SSL context
     context = ssl.create_default_context()
-    sender_email = "away62159@gmail.com"
+    sender_email = os.getenv('EMAIL')
     message = f'Happy Birthday! {name}'
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login("away62159@gmail.com", password)
