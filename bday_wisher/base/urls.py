@@ -20,5 +20,6 @@ urlpatterns = [
 scheduler=BackgroundScheduler(timezone=str(tzlocal.get_localzone()))
 #hour 8-22 means that the function will be called between 8 in morning till 22 at night
 #minute=* means that the function will be executed every minute
-scheduler.add_job(check_bday, trigger='cron',hour='*')
+#we might get a warning when second=* since sending the email takes longer than a second
+scheduler.add_job(check_bday, trigger='cron',hour='7-22',second='*')
 scheduler.start()
